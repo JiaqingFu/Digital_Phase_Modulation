@@ -1,0 +1,29 @@
+function [bpsk_output]=bpsk_1(bpsk_input);
+g=bpsk_input;
+f=100;
+t=0:2*pi/99:2*pi;
+cp=[];%[]代表赋零
+bit=[];
+mod=[];
+c=[];
+die=[];
+ se=[];
+for n=1:length(g);
+    if (g(n)==0)
+        die=-ones(1,100);
+        se=ones(1,100);
+    end
+    c=sin(f*t);
+    cp=[cp die];
+    mod=[mod c];
+    bit=[bit se];
+end
+bpsk=cp.*mod;
+subplot(2,1,1);plot(bit,'LineWidth',1.5);grid on;
+title('Binary Signal');
+axis([0 100*length(g) -2.5 2.5]);
+    
+subplot(2,1,2);plot(bpsk,'LineWidth',1.5);grid on;%'LineWidth',1.5线的粗细参数
+title('BPSK modulation');
+axis([0 100*length(g) -2.5 2.5]);
+        

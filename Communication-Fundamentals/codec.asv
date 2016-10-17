@@ -1,0 +1,11 @@
+function cod=codec(m);%g1与g2为冲激响应序列
+
+m1=conv(m,g1);%conv多项式相乘
+m2=conv(m,g2);
+l=length(m1);
+for i=1:l;
+    cod([2*i-1])=rem(m1([i]),2);%求余函数
+    cod([2*i])=rem(m2([i]),2);
+    
+end
+ 

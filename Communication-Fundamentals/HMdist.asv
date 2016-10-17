@@ -1,0 +1,2 @@
+function dist=HMdist(a,b)
+c=[a;b]
